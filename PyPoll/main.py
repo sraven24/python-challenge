@@ -30,10 +30,11 @@ with open(csvpath, encoding='utf-8') as csvfile:
 
 # Learned set function from "https://datagy.io/python-count-unique-values-list/"
 # Counting unique voter ids in column 1 to find total votes
-set = set(voter_id)
-voter_total = len(set)
+unqvotes = set(voter_id)
+voter_total = len(unqvotes)
 
 # Using the imported Counter function to count the # of votes each candidate got
+#https://realpython.com/python-counter/#:~:text=Counter%20is%20a%20subclass%20of,argument%20to%20the%20class
 win_count = Counter(list(candidate))
 
 # Begin printed output of results
@@ -47,7 +48,7 @@ for wins in win_count:
     print(f'{wins}: {round(((win_count[wins]/voter_total)*100),3)}% ({win_count[wins]})')
 
 print (f'----------------------------------')
-# Using the max function to find the winner in the win_count dictionary the print it out
+# Using the max function to find the winner in the win_count dictionary and print it out
 #https://datagy.io/python-get-dictionary-key-with-max-value/
 big_winner = max(win_count, key = win_count.get)
 print (f'Winner: {big_winner}')
